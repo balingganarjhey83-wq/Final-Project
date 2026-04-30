@@ -1,0 +1,802 @@
+/* ============================================
+   UNIFIED STYLESHEET
+   Travel Guide to Kibungan, Benguet
+   Covers: index, Destinations, About Us, Contact Us, Sign In
+   ============================================ */
+
+/* ---------- CSS VARIABLES ---------- */
+:root {
+    --primary-blue: #b8d4f0;
+    --dark-blue: #6b9dc7;
+    --text-dark: #333;
+    --bg-light: #f8f9fa;
+    --border-color: #e9ecef;
+    --text-muted: #777;
+    --text-secondary: #666;
+    --text-light: #888;
+    --white: #fff;
+    --black: #000;
+}
+
+/* ---------- BASE ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar-custom {
+    background-color: var(--primary-blue);
+    padding: 15px 0;
+}
+
+.navbar-custom .navbar-brand {
+    font-weight: 700;
+    color: var(--black);
+    font-size: 1.1rem;
+}
+
+.navbar-custom .nav-link {
+    color: var(--black);
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin: 0 5px;
+    position: relative;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #555;
+}
+
+.navbar-custom .nav-link.active {
+    color: var(--black);
+}
+
+.navbar-custom .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    border-radius: 2px;
+}
+
+/* Navbar Buttons */
+.btn-login {
+    background: transparent;
+    border: 1px solid var(--black);
+    color: var(--black);
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background: var(--black);
+    color: var(--white);
+}
+
+.btn-signup {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-signup:hover {
+    background: #333;
+}
+
+/* ---------- HERO BANNER (Shared) ---------- */
+.hero-banner {
+    position: relative;
+    height: 250px;
+    border-radius: 15px;
+    margin: 0 15px;
+    overflow: hidden;
+}
+
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hero-banner h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    font-size: 3rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    margin: 0;
+    text-align: center;
+}
+
+/* ---------- HERO CAROUSEL (Index Only) ---------- */
+.hero-carousel {
+    height: 450px;
+    border-radius: 15px;
+    margin: 0 15px;
+    overflow: hidden;
+}
+
+.hero-carousel .carousel-item {
+    height: 450px;
+}
+
+.hero-carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-caption {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    z-index: 2;
+}
+
+.hero-caption h1 {
+    color: var(--black);
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: none;
+    position: static;
+    transform: none;
+}
+
+/* Hide carousel controls */
+.hero-carousel .carousel-control-prev,
+.hero-carousel .carousel-control-next,
+.hero-carousel .carousel-indicators,
+.destination-card .carousel-control-prev,
+.destination-card .carousel-control-next,
+.destination-card .carousel-indicators {
+    display: none !important;
+}
+
+/* ---------- DESTINATION CARDS (Index Only) ---------- */
+.destinations-section {
+    padding: 50px 0;
+    background-color: var(--white);
+}
+
+.section-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 35px;
+    color: var(--black);
+}
+
+.destination-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 160px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-5px);
+}
+
+.destination-card .carousel-item {
+    height: 160px;
+}
+
+.destination-card .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destination-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: 15px 12px 10px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.destination-overlay h5 {
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* ---------- ABOUT US PAGE ---------- */
+.about-section {
+    padding: 50px 0 30px;
+    background-color: var(--white);
+}
+
+.about-title {
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    color: var(--black);
+}
+
+.about-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Services Grid */
+.services-section {
+    padding: 20px 0 50px;
+    background-color: var(--white);
+}
+
+.service-item {
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.service-icon {
+    font-size: 2rem;
+    color: #555;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.service-item h5 {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: var(--black);
+}
+
+.service-item p {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 50px 0;
+    background-color: var(--bg-light);
+}
+
+.faq-title {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: var(--black);
+}
+
+.accordion-item {
+    border: none;
+    background: transparent;
+    margin-bottom: 5px;
+}
+
+.accordion-button {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 12px 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: transparent;
+    color: var(--black);
+    box-shadow: none;
+}
+
+.accordion-button::after {
+    content: '\F282';
+    font-family: 'bootstrap-icons';
+    background-image: none;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.accordion-button:not(.collapsed)::after {
+    content: '\F286';
+    transform: none;
+    color: var(--black);
+}
+
+.accordion-body {
+    padding: 0 0 15px 0;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+.faq-image {
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    min-height: 250px;
+    object-fit: cover;
+}
+
+/* ---------- CONTACT US PAGE ---------- */
+.contact-info-section {
+    padding: 50px 0 30px;
+    background-color: var(--white);
+}
+
+.info-card {
+    text-align: center;
+    padding: 20px;
+}
+
+.info-icon {
+    font-size: 1.8rem;
+    color: #555;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.info-card h5 {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: var(--black);
+}
+
+.info-card p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Contact Form */
+.contact-form-section {
+    padding: 30px 0 50px;
+    background-color: var(--white);
+}
+
+.promo-card {
+    background-color: var(--primary-blue);
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.plane-icon {
+    font-size: 3rem;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.promo-card h5 {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.promo-card h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 20px;
+}
+
+.btn-view-details {
+    background-color: var(--white);
+    border: none;
+    color: var(--black);
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.btn-view-details:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.contact-form h3 {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--black);
+}
+
+.contact-form p {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 25px;
+}
+
+/* ---------- SIGN IN PAGE ---------- */
+.form-section {
+    padding: 40px 0;
+    background-color: var(--white);
+}
+
+.signup-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.btn-signup-form {
+    background-color: var(--primary-blue);
+    border: none;
+    color: var(--black);
+    padding: 12px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-signup-form:hover {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+/* ---------- FORM CONTROLS (Shared) ---------- */
+.form-control-custom {
+    background-color: var(--white);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    width: 100%;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control-custom:focus {
+    outline: none;
+    border-color: var(--dark-blue);
+    box-shadow: 0 0 0 2px rgba(184, 212, 240, 0.3);
+}
+
+/* Sign in variant (blue bg) */
+.signup-form .form-control-custom {
+    background-color: var(--primary-blue);
+    border: 1px solid #9ec3e6;
+}
+
+.signup-form .form-control-custom:focus {
+    background-color: var(--primary-blue);
+    border-color: var(--dark-blue);
+}
+
+.form-label-custom {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--black);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn-send-message {
+    background-color: var(--primary-blue);
+    border: none;
+    color: var(--white);
+    padding: 12px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-send-message:hover {
+    background-color: var(--dark-blue);
+}
+
+/* ---------- DESTINATIONS PAGE ---------- */
+.destinations-content {
+    padding: 50px 0;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.feature-list li i {
+    color: var(--text-secondary);
+    margin-right: 10px;
+    font-size: 0.8rem;
+}
+
+.content-image {
+    border-radius: 15px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* ---------- CTA BANNER (Shared) ---------- */
+.cta-banner {
+    background-color: var(--primary-blue);
+    padding: 30px 0;
+    text-align: center;
+}
+
+.cta-icon {
+    font-size: 2.5rem;
+    color: var(--dark-blue);
+    margin-bottom: 10px;
+}
+
+.cta-banner p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.cta-banner .phone {
+    font-weight: 700;
+    color: var(--black);
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* ---------- FOOTER (Shared) ---------- */
+.footer-custom {
+    background-color: var(--bg-light);
+    padding: 50px 0 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--black);
+}
+
+.footer-brand i {
+    color: var(--black);
+}
+
+.footer-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.social-icons a {
+    color: var(--text-secondary);
+    margin-right: 10px;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--black);
+}
+
+.footer-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    color: var(--black);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--black);
+}
+
+.contact-info p,
+.contact-info-footer p {
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.contact-info i,
+.contact-info-footer i {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 3px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.75rem;
+    color: #999;
+}
+
+/* ---------- UTILITY CLASSES ---------- */
+.accent-line {
+    width: 40px;
+    height: 3px;
+    background-color: var(--pink-accent);
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 991px) {
+    .faq-image {
+        margin-top: 30px;
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Hero */
+    .hero-banner {
+        height: 220px;
+    }
+
+    .hero-banner h1 {
+        font-size: 2rem;
+    }
+
+    .hero-carousel,
+    .hero-carousel .carousel-item {
+        height: 250px;
+    }
+
+    .hero-caption {
+        top: 25px;
+        left: 25px;
+    }
+
+    .hero-caption h1 {
+        font-size: 1.6rem;
+    }
+
+    /* Cards */
+    .destination-card,
+    .destination-card .carousel-item {
+        height: 140px;
+        margin-bottom: 15px;
+    }
+
+    /* Forms */
+    .signup-form {
+        padding: 0 20px;
+    }
+
+    .promo-card {
+        margin-bottom: 30px;
+    }
+
+    /* Navbar buttons */
+    .navbar-custom .btn-login,
+    .navbar-custom .btn-signup {
+        margin: 5px 0;
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    /* Content */
+    .content-image {
+        height: 220px;
+    }
+
+    .about-title {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-banner h1 {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .footer-custom {
+        padding: 30px 0 15px;
+    }
+}
